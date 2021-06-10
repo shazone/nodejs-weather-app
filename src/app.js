@@ -85,10 +85,12 @@ app.get('/about',(req, res)=>{
 })
 
 //get method - 404 page
-app.get('/notfound',(req, res)=>{
+app.get('*',(req, res)=>{
     res.render('404',{
         title:'404 - Not Found',
-        message:'Your requested page is not exist'
+        message:'We are sorry, Your requested page is not exist',
+        name,
+        currentYear
     })
 })
 

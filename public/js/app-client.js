@@ -1,8 +1,8 @@
-console.log('Client side javascript file is loaded!')
+//console.log('Client side javascript file is loaded!')
 
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
-console.log('search:'+search        )
+//console.log('search:'+search        )
 const messageHdrTitle = document.querySelector('#message-header-title')
 const messageOne = document.querySelector('#message-1')
 const messageTwo = document.querySelector('#message-2')
@@ -19,8 +19,8 @@ weatherForm.addEventListener('submit', (e) => {
     messageOne.textContent = 'Loading...'
     messageTwo.textContent = ''
     messageHdrTitle.textContent = ''
-    console.log('Client side javascript file is loaded! before fetch')
-    fetch('http://localhost:3000/weather?address=' + location).then((response) => {
+    //console.log('Client side javascript file is loaded! before fetch')
+    fetch('/weather?address=' + location).then((response) => {
         response.json().then((data) => {
             if (data.error) {
                 messageOne.textContent = data.error

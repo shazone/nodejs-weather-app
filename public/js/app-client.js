@@ -10,15 +10,20 @@ const weatherIconImg = document.querySelector('#weather_icon')
 
 const divResultOutput = document.querySelector('#div-result-output')
 divResultOutput.style.display = "none";
+const divLoadingAnimation = document.querySelector('#div-loading-animation')
+divLoadingAnimation.style.display = "none";
 
 weatherForm.addEventListener('submit', (e) => {
     e.preventDefault()
 
     const location = search.value
 
-    messageOne.textContent = 'Loading...'
+    weatherIconImg.src = '';
+    messageOne.textContent = ''
     messageTwo.textContent = ''
     messageHdrTitle.textContent = ''
+    divLoadingAnimation.style.display = "block";
+    divResultOutput.style.display = "none";
     //console.log('Client side javascript file is loaded! before fetch')
     fetch('/weather?address=' + location).then((response) => {
         response.json().then((data) => {
@@ -30,6 +35,7 @@ weatherForm.addEventListener('submit', (e) => {
                 messageTwo.textContent = data.forecast
                 weatherIconImg.src = data.weather_icons_url
                 divResultOutput.style.display = "block";
+                divLoadingAnimation.style.display = "none";
 
             }
         })

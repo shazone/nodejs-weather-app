@@ -16,6 +16,8 @@ hbs.registerPartials(partialsPath)
 //console.log(__dirname);
 app.use(express.static(publicDirectoryPath))
 
+//for heroku
+const port = process.env.PORT || 3000
 
 const name = 'Shazwan Shaari'
 const currentYear = new Date().getFullYear()
@@ -116,6 +118,6 @@ app.get('/product',(req, res)=>{
     res.send({products:[]})
 })
 
-app.listen(3000,()=>{
-    console.log('Server is up and running ...');
+app.listen(port,()=>{
+    console.log('Server is up and running on port:'+port);
 })
